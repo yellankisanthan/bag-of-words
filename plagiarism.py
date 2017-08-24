@@ -1,5 +1,5 @@
 import os
-import string
+#import string
 import re
 class bag_of_words:                  #using class called plagiarism
     def word_freq(self,s):           #convert string to ditionary using method name word_freq
@@ -11,26 +11,25 @@ class bag_of_words:                  #using class called plagiarism
                 d[i]=1
         if ''in d:
             del d['']
-    
+        print(d)
         return d
     
     def split_word(self,sett):       #split_word is to split into words and removing punctuation
-        sett=sett.lower()
-        sett=re.sub(r"\W"," ",sett)
-        sett=sett.replace("\n"," ").replace("\t"," ")
-        sett=sett.split(" ")
-        sett=[punct.strip(string.punctuation)for punct in sett]
+        sett=sett.lower()           # to convert uppercase letters to lowercase
+        sett=re.sub('[@#$%^&*(){}?|/\:"-+=!~`;]', '', sett) # to delete special characters
+        sett=sett.replace("\n"," ").replace("\t"," ")   #to replace \n and tab space with space
+        sett=sett.split(" ")            
+        #sett=[punct.strip(string.punctuation)for punct in sett]
         return sett
 
-    def mod(self,d):                 # used mod method to get the numerator
+    def mod(self,d):                 # used mod method to get the n denominator
         n=0
         for i in d:
-            temp=d[i]*d[i]
-            n=n+temp
+            n+=d[i]*d[i]
         n=n**0.5
         return (n)
 
-    def vector(self,dict1,dict2):    # used vector method to get the values of denominator
+    def vector(self,dict1,dict2):    # used vector method to get the values of numerator
         temp=0
         for i in dict1:
             for j in dict2:
@@ -62,13 +61,16 @@ class bag_of_words:                  #using class called plagiarism
                 if(file1 == file2):
                     plag_percent = None
                 x2.append(plag_percent)
+                #print(x2)
             x1.append(x2)
+            #print(x1)
         return x1
     
     def input1(self):
         path_dir=input("enter the path directory:/n")
         x=F.plagiarism(path_dir)
         l=[i for i in os.listdir(path_dir) if i.endswith('.txt')]
+        #print(l)
         os.chdir(path_dir)
         k=0
         for i in x:
