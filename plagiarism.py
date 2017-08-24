@@ -1,7 +1,7 @@
 import os
 #import string
 import re
-class bag_of_words:                  #using class called plagiarism
+class bag_of_words:                  #using class called bag_ofwords
     def word_freq(self,s):           #convert string to ditionary using method name word_freq
         d={}
         for i in s:
