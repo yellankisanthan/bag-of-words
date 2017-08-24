@@ -16,7 +16,7 @@ class bag_of_words:                  #using class called plagiarism
     
     def split_word(self,sett):       #split_word is to split into words and removing punctuation
         sett=sett.lower()           # to convert uppercase letters to lowercase
-        sett=re.sub('[@#$%^&*(){}?|/\:"-+=!~`;]', '', sett) # to delete special characters
+        sett=re.sub('[@#$%^&*(){}?|/\:"-+=!~`;,.<>]', '', sett) # to delete special characters
         sett=sett.replace("\n"," ").replace("\t"," ")   #to replace \n and tab space with space
         sett=sett.split(" ")            
         #sett=[punct.strip(string.punctuation)for punct in sett]
