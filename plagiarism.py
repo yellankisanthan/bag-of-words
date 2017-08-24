@@ -56,6 +56,7 @@ class bag_of_words:                  #using class called bag_ofwords
                 f1mod=F.mod(dict1)
                 f2mod=F.mod(dict2)
                 n=F.vector(dict1,dict2)
+                #formula for bag of words
                 plag_percent=(n)*100/((f1mod)*(f2mod))
                 plag_percent=round(plag_percent,2)
                 if(file1 == file2):
